@@ -1,5 +1,6 @@
 import { readFile } from "node:fs/promises";
-import * as nodePath from "node:path";
+
+import { validatePath } from "../../utils/validate-path.js";
 
 const read = async (sourceFilePath) => {
   try {
@@ -18,15 +19,7 @@ const read = async (sourceFilePath) => {
 
 export const handleCat = ({ path }, input) => {
   const [_, sourcePath] = input.split("cat ");
-
-  if (!sourcePath) throw new Error("Invalid source path");
-
-  const validatedSourcePath = nodePath.resolve(
-    `${path.current}${nodePath.sep}${sourcePath}`
-  );
-
-  if (!validatedSourcePath.startsWith(path.root))
-    throw new Error("Don't leave your home");
+  const validatedSourcePath = validatePath(sourcePath, { path });
 
   return read(validatedSourcePath);
 };

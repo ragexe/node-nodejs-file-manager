@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "config": {
+    "username": "ragexe"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js -- --username=ragexe"
   },
   "repository": {
     "type": "git",
@@ -15,5 +19,6 @@
   "bugs": {
     "url": "https://github.com/ragexe/node-nodejs-file-manager/issues"
   },
+  "type": "module",
   "homepage": "https://github.com/ragexe/node-nodejs-file-manager#readme"
 }

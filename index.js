@@ -19,20 +19,29 @@ const store = new Store({
 });
 
 await (async () => {
-  const { stdout, stdin } = process;
-  const merged = await concatStreams([
-    Readable.from("").pipe(
-      new Transform({
-        transform: (_, __, callback) => {
-          console.log(`\nWelcome to the File Manager, ${store.username}!\n`);
-          callback(null, _);
-        },
-      })
-    ),
+  const { stdin } = process;
+  const start$ = await concatStreams([
+    Readable.from("_start")
+      .pipe(
+        new Transform({
+          transform: (chunk, __, callback) => {
+            console.log(`\nWelcome to the File Manager, ${store.username}!\n`);
+            callback(null, chunk);
+          },
+        })
+      )
+      .pipe(getLoggerOperator(store))
+      .pipe(
+        new Transform({
+          transform: (_, __, callback) => {
+            callback(null, null);
+          },
+        })
+      ),
     stdin,
   ]);
 
-  Readable.from(merged)
+  Readable.from(start$)
     .pipe(getCommandOperator(store))
     .pipe(getLoggerOperator(store));
 

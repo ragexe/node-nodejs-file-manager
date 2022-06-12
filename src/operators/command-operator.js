@@ -35,7 +35,7 @@ export const getCommandOperator = (store) =>
             handleUp(store);
             break;
           case input.startsWith("cd"):
-            handleCd(store);
+            handleCd(store, input);
             break;
           case input === "ls":
             handleLs(store);

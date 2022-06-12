@@ -14,7 +14,8 @@ const store = new Store({
   username: capitalize(parseArgs().username || "anonymous"),
   path: {
     root: homedir(),
-    current: homedir(),
+    // current: homedir(),
+    current: '/Users/raman.makeichyk/projects/node-js-2022-q2/node-nodejs-file-manager',
   },
 });
 

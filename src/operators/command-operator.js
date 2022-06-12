@@ -31,10 +31,10 @@ export const getCommandOperator = (store) =>
             return;
 
           case input === "up":
-            handleCd(store, "cd ./..");
+            await handleCd(store, "cd ./..");
             break;
           case input.startsWith("cd"):
-            handleCd(store, input);
+            await handleCd(store, input);
             break;
           case input === "ls":
             await handleLs(store);

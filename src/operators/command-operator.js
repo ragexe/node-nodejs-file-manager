@@ -41,7 +41,7 @@ export const getCommandOperator = (store) =>
             break;
 
           case input.startsWith("cat"):
-            handleCat(store);
+            await handleCat(store, input);
             break;
           case input.startsWith("add"):
             handleAdd(store);

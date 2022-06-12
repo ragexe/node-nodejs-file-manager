@@ -1,7 +1,6 @@
-import { homedir } from 'node:os';
-import * as nodePath from 'node:path';
+import * as nodePath from "node:path";
 
-import { checkPathExists } from '../../utils/check-path-exists.js';
+import { checkPathExists } from "../../utils/check-path-exists.js";
 
 export const handleCd = async ({ path }, input) => {
   const [_, targetPath] = input.split("cd ");
@@ -15,7 +14,7 @@ export const handleCd = async ({ path }, input) => {
   const isExisting = await checkPathExists(validatedTargetPath);
   if (!isExisting) throw new Error("Doesn't exist");
 
-  if (!validatedTargetPath.startsWith(homedir()))
+  if (!validatedTargetPath.startsWith(path.root))
     throw new Error("Don't leave your home");
 
   path.current = validatedTargetPath;

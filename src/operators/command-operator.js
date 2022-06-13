@@ -84,7 +84,7 @@ export const getCommandOperator = (store) =>
             await handleCompress(store, input);
             break;
           case inputCommand === "decompress":
-            handleDecompress(store);
+            await handleDecompress(store, input);
             break;
 
           default:

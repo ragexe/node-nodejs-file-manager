@@ -1,4 +1,5 @@
 import { homedir } from "node:os";
+import { resolve } from "node:path";
 import process from "node:process";
 import { Readable, Transform } from "stream";
 
@@ -14,8 +15,8 @@ const store = new Store({
   username: capitalize(parseArgs().username || "anonymous"),
   path: {
     root: homedir(),
-    // current: homedir(),
-    current: '/Users/raman.makeichyk/projects/node-js-2022-q2/node-nodejs-file-manager',
+    // current: resolve(), // Uncomment for more comfortable review
+    current: homedir(),
   },
 });
 

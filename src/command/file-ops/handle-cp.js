@@ -25,7 +25,7 @@ export const copy = async (sourcePath, targetPath) => {
 export const handleCp = async ({ path }, input) => {
   const [_, names] = input.split("cp ");
 
-  if (!names) throw new Error("No provided arguments for rename");
+  if (!names) throw new Error("No provided arguments for copy");
 
   const argNames = names
     .replaceAll("'", '"')
@@ -34,10 +34,10 @@ export const handleCp = async ({ path }, input) => {
 
   const [sourcePath, targetFolderPath = "."] = argNames;
   if (!sourcePath || !targetFolderPath)
-    throw new Error("No provided previousName for rename");
+    throw new Error("No provided source or target for copy");
 
-    const validatedSourcePath = validatePath(sourcePath, { path });
-    const targetFileName = nodePath.basename(validatedSourcePath);
+  const validatedSourcePath = validatePath(sourcePath, { path });
+  const targetFileName = nodePath.basename(validatedSourcePath);
 
   let validatedTargetPath = validatePath(
     nodePath.join(targetFolderPath, targetFileName),

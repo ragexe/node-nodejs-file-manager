@@ -25,7 +25,7 @@ export const handleRn = async ({ path }, input) => {
 
   const [previousName, nextName] = argNames;
   if (!previousName || !nextName)
-    throw new Error("No provided previousName and nextName for rename");
+    throw new Error("No provided source or new name for rename");
 
   const [validatedPreviousName, validatedNextName] = [
     previousName,

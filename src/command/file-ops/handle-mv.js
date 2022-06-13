@@ -34,7 +34,7 @@ export const handleMv = async ({ path }, input) => {
 
   const [sourcePath, targetFolderPath] = argNames;
   if (!sourcePath || !targetFolderPath)
-    throw new Error("No provided previousName for rename");
+    throw new Error("No provided source or target for move");
 
   const validatedSourcePath = validatePath(sourcePath, { path });
   const targetFileName = nodePath.basename(validatedSourcePath);

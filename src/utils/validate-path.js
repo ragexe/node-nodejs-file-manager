@@ -7,8 +7,7 @@ export const validatePath = (pathToValidate, { path }) => {
     ? nodePath.resolve(pathToValidate)
     : nodePath.resolve(`${path.current}${nodePath.sep}${pathToValidate}`);
 
-  if (!validatedPath.startsWith(path.root))
-    throw new Error("Don't leave your home");
+  if (!validatedPath.startsWith(path.root)) throw new Error("Forbidden");
 
   return validatedPath;
 };

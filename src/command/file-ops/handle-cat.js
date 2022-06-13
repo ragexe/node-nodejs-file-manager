@@ -1,20 +1,22 @@
-import { readFile } from "node:fs/promises";
+import { createReadStream } from "fs";
 
 import { validatePath } from "../../utils/validate-path.js";
 
 const read = async (sourceFilePath) => {
-  try {
-    const contentBuffer = await readFile(sourceFilePath, { flag: "r" });
-    console.log("\x1b[40m%s\x1b[0m", contentBuffer.toString());
+  const readStream = createReadStream(sourceFilePath, { flags: "r" });
 
-    return Promise.resolve(void 0);
-  } catch (error) {
-    if (error && error.code === "ENOENT") {
-      throw new Error("FS operation failed");
-    }
+  const promise = new Promise((resolve, reject) => {
+    readStream
+      .on("data", (chunk) => console.log("\x1b[40m%s\x1b[0m", chunk.toString()))
+      .on("close", () => {
+        resolve(void 0);
+      })
+      .on("error", (error) => {
+        reject(error);
+      });
+  });
 
-    throw error;
-  }
+  return promise;
 };
 
 export const handleCat = ({ path }, input) => {

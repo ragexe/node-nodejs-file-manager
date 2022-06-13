@@ -14,10 +14,7 @@ export const copy = async (sourcePath, targetPath) => {
 
     return Promise.resolve(void 0);
   } catch (error) {
-    if (
-      error &&
-      ["ERR_FS_CP_EEXIST", "ENOENT", "SRC_NOT_A_FOLDER"].includes(error.code)
-    ) {
+    if (error && ["ERR_FS_CP_EEXIST", "ENOENT"].includes(error.code)) {
       throw new Error("FS operation failed");
     }
 

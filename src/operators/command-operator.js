@@ -54,7 +54,7 @@ export const getCommandOperator = (store) =>
             await handleCp(store, input);
             break;
           case inputLowerCased.startsWith("mv"):
-            handleMv(store);
+            await handleMv(store, input);
             break;
           case inputLowerCased.startsWith("rm"):
             await handleRm(store, input);

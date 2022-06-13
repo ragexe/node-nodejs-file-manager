@@ -36,8 +36,8 @@ export const handleCp = async ({ path }, input) => {
   if (!sourcePath || !targetFolderPath)
     throw new Error("No provided previousName for rename");
 
-  const targetFileName = nodePath.basename(sourcePath);
-  const validatedSourcePath = validatePath(sourcePath, { path });
+    const validatedSourcePath = validatePath(sourcePath, { path });
+    const targetFileName = nodePath.basename(validatedSourcePath);
 
   let validatedTargetPath = validatePath(
     nodePath.join(targetFolderPath, targetFileName),

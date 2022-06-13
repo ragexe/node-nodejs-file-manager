@@ -23,67 +23,67 @@ export const getCommandOperator = (store) =>
   new Transform({
     transform: async (chunk, _, callback) => {
       const input = chunk.toString().trim();
-      const inputLowerCased = input.toLowerCase();
+      const [inputCommand] = input.toLowerCase().split(" ");
 
       try {
         switch (true) {
-          case inputLowerCased === ".exit":
+          case inputCommand === ".exit":
             handleExit(store);
             return;
 
-          case inputLowerCased === "up":
+          case inputCommand === "up":
             await handleCd(store, "cd ./..");
             break;
-          case inputLowerCased.startsWith("cd"):
+          case inputCommand === "cd":
             await handleCd(store, input);
             break;
-          case inputLowerCased === "ls":
+          case inputCommand === "ls":
             await handleLs(store);
             break;
 
-          case inputLowerCased.startsWith("cat"):
+          case inputCommand === "cat":
             await handleCat(store, input);
             break;
-          case inputLowerCased.startsWith("add"):
+          case inputCommand === "add":
             await handleAdd(store, input);
             break;
-          case inputLowerCased.startsWith("rn"):
+          case inputCommand === "rn":
             await handleRn(store, input);
             break;
-          case inputLowerCased.startsWith("cp"):
+          case inputCommand === "cp":
             await handleCp(store, input);
             break;
-          case inputLowerCased.startsWith("mv"):
+          case inputCommand === "mv":
             await handleMv(store, input);
             break;
-          case inputLowerCased.startsWith("rm"):
+          case inputCommand === "rm":
             await handleRm(store, input);
             break;
 
-          case inputLowerCased === "os --eol":
+          case inputCommand === "os --eol":
             handleOsEol(store);
             break;
-          case inputLowerCased === "os --cpus":
+          case inputCommand === "os --cpus":
             handleOsCpus(store);
             break;
-          case inputLowerCased === "os --homedir":
+          case inputCommand === "os --homedir":
             handleOsHomedir(store);
             break;
-          case inputLowerCased === "os --username":
+          case inputCommand === "os --username":
             handleOsUsername(store);
             break;
-          case inputLowerCased === "os --architecture":
+          case inputCommand === "os --architecture":
             handleOsArchitecture(store);
             break;
 
-          case inputLowerCased.startsWith("hash"):
+          case inputCommand === "hash":
             await handleHash(store, input);
             break;
 
-          case inputLowerCased.startsWith("compress"):
-            handleCompress(store);
+          case inputCommand === "compress":
+            await handleCompress(store, input);
             break;
-          case inputLowerCased.startsWith("decompress"):
+          case inputCommand === "decompress":
             handleDecompress(store);
             break;
 

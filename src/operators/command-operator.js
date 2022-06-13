@@ -77,7 +77,7 @@ export const getCommandOperator = (store) =>
             break;
 
           case inputLowerCased.startsWith("hash"):
-            handleHash(store);
+            await handleHash(store, input);
             break;
 
           case inputLowerCased.startsWith("compress"):

@@ -57,7 +57,7 @@ export const getCommandOperator = (store) =>
             handleMv(store);
             break;
           case inputLowerCased.startsWith("rm"):
-            handleRm(store);
+            await handleRm(store, input);
             break;
 
           case inputLowerCased === "os --eol":

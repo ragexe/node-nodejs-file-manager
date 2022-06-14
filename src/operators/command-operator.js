@@ -60,19 +60,20 @@ export const getCommandOperator = (store) =>
             await handleRm(store, input);
             break;
 
-          case inputCommand === "os --eol":
+          case input === "os --eol":
+          case input === "os --EOL":
             handleOsEol(store);
             break;
-          case inputCommand === "os --cpus":
+          case input === "os --cpus":
             handleOsCpus(store);
             break;
-          case inputCommand === "os --homedir":
+          case input === "os --homedir":
             handleOsHomedir(store);
             break;
-          case inputCommand === "os --username":
+          case input === "os --username":
             handleOsUsername(store);
             break;
-          case inputCommand === "os --architecture":
+          case input === "os --architecture":
             handleOsArchitecture(store);
             break;
 

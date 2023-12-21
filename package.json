@@ -1,0 +1,25 @@
+{
+  "name": "nodejs-file-manager",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "config": {
+    "username": "ragexe"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "start:dev": "node index.js --username=john"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ragexe/node-nodejs-file-manager.git"
+  },
+  "author": "ragexe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ragexe/node-nodejs-file-manager/issues"
+  },
+  "type": "module",
+  "homepage": "https://github.com/ragexe/node-nodejs-file-manager#readme"
+}
